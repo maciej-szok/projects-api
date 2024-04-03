@@ -156,6 +156,7 @@ Storing the projects in the `"item"` field will allow for easy expansion of the 
 ## Processing requests
 - FastAPI will be used to handle the requests
 - The application will use Uvicorn ASGI
+- No user authentication will be implemented at this stage
 
 ## Data storage
 - The projects will be stored in a PostgreSQL database

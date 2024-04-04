@@ -42,6 +42,8 @@ class Settings(BaseSettings):
             path=self.POSTGRES_DB,
         )
 
+    MAX_PAGE_SIZE: int = 50
+
     class Config:
         case_sensitive = True
 

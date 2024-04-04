@@ -14,7 +14,7 @@ Supported operations:
 Basic project attributes:
 - name (required, character limit, up to 32 characters)
 - description (optional)
-- date range (required)
+- date range (required) (assuming date range, not datetime range)
 - area of interest (required, geojson file)
 
 Technical requirements:

@@ -27,6 +27,8 @@ services:
       context: .
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
+    # Uncommenting platform could help with running on M1 Macs
+#    platform: linux/amd64 # Patch for M1 Macs
 
 
 volumes:

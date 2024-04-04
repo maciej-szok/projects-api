@@ -29,7 +29,7 @@ def get_url():
     user = os.getenv("POSTGRES_USER", "postgres")
     password = os.getenv("POSTGRES_PASSWORD", "")
     server = os.getenv("POSTGRES_SERVER", "")
-    db = os.getenv("POSTGRES_DB", "app")
+    db = os.getenv("POSTGRES_DB", "projects")
     return f"postgresql://{user}:{password}@{server}:5432/{db}"
 
 

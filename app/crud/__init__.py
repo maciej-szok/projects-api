@@ -1,9 +1,7 @@
-from .crud_item import item
-
+from .base import CRUDBase
+from app.models.project import Project
+from app.schemas.project import ProjectCreate, ProjectUpdate
 # For a new basic set of CRUD operations you could just do
-
-# from .base import CRUDBase
-# from app.models.item import Item
-# from app.schemas.item import ItemCreate, ItemUpdate
-
 # item = CRUDBase[Item, ItemCreate, ItemUpdate](Item)
+
+project = CRUDBase[Project, ProjectCreate, ProjectUpdate](Project)

@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
 from app.db import base  # noqa: F401
+from app.models import project  # noqa: F401
 
 # make sure all SQL Alchemy models are imported (app.db.base) before initializing DB
 # otherwise, SQL Alchemy might fail to initialize relationships properly

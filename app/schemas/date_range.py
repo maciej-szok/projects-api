@@ -1,16 +1,22 @@
 from datetime import date
-from pydantic import BaseModel, model_serializer
+
+from pydantic import BaseModel, model_serializer, model_validator
 
 
 class DateRange(BaseModel):
     """
-    Range is stored in a canonical form. Lower bound is inclusive, upper bound is exclusive.
+    DateRange is stored in a canonical form. Lower bound is inclusive, upper bound is exclusive.
     e.g. lower=1 upper=5 is [1,4)
     """
 
-    # TODO validate that lower is before upper on creation and update
     lower: date
     upper: date
+
+    @model_validator(mode='after')
+    def check_date_range(self) -> 'DateRange':
+        if self.lower >= self.upper:
+            raise ValueError('lower bound must be before upper bound')
+        return self
 
 
 class DateRangeIn(DateRange):

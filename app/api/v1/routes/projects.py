@@ -26,7 +26,7 @@ def create_project(
 
 # TODO: if more endpoint with pagination is needed,
 #  consider creating a common system for the pagination or use a library
-@router.get("/", response_model=List[schemas.Project])
+@router.get("/", response_model=schemas.ProjectList)
 def read_projects(
     db: Session = Depends(deps.get_db),
     skip: Annotated[int, Query(ge=0)] = 0,
@@ -36,8 +36,8 @@ def read_projects(
     Retrieve multiple projects.
     """
 
-    items = crud.project.get_multi(db=db, skip=skip, limit=limit)
-    return items
+    projects = crud.project.get_multi(db=db, skip=skip, limit=limit)
+    return schemas.ProjectList(items=projects)
 
 
 @router.get("/{project_id}", response_model=schemas.Project)

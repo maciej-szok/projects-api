@@ -1,5 +1,8 @@
-from typing import Optional
+from typing import Optional, List
+
+import pydantic
 from pydantic import BaseModel, Field, ConfigDict
+from sqlalchemy.dialects.postgresql import Range
 
 from .common import OptionalModel
 from .date_range import DateRange, DateRangeIn
@@ -26,11 +29,21 @@ class ProjectUpdate(ProjectCreate, OptionalModel):
 # Representation of the project in the database
 class ProjectInDBBase(ProjectBase):
     id: int
-    date_range: DateRange
+    date_range: DateRange | Range
 
     model_config = ConfigDict(from_attributes=True)
+
+    @pydantic.model_validator(mode="before")
+    def check(self) -> "ProjectInDBBase":
+        if isinstance(self.date_range, Range):
+            self.date_range = DateRange(lower=self.date_range.lower, upper=self.date_range.upper)
+        return self
 
 
 # Properties to return to client
 class Project(ProjectInDBBase):
     pass
+
+
+class ProjectList(BaseModel):
+    items: List[Project]

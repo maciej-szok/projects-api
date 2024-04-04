@@ -18,6 +18,9 @@ class DateRange(BaseModel):
             raise ValueError('lower bound must be before upper bound')
         return self
 
+    def __eq__(self, other):
+        return self.lower == other.lower and self.upper == other.upper
+
 
 class DateRangeIn(DateRange):
     """

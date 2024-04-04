@@ -1,6 +1,6 @@
 from typing import Any, Annotated
 
-from pydantic import AnyHttpUrl, PostgresDsn, computed_field, BeforeValidator, AnyUrl
+from pydantic import AnyHttpUrl, PostgresDsn, computed_field, BeforeValidator, AnyUrl, ConfigDict
 from pydantic_core import MultiHostUrl
 from pydantic_settings import BaseSettings
 
@@ -19,7 +19,7 @@ class Settings(BaseSettings):
         list[AnyUrl] | str, BeforeValidator(parse_cors)
     ] = []
 
-    API_V1_STR: str = "/api/v1"
+    API_V1_PATH: str = "/api/v1"
     SERVER_HOST: AnyHttpUrl
 
     POSTGRES_SERVER: str
@@ -44,8 +44,7 @@ class Settings(BaseSettings):
 
     MAX_PAGE_SIZE: int = 50
 
-    class Config:
-        case_sensitive = True
+    model_config = ConfigDict(case_sensitive=True)
 
 
 settings = Settings()

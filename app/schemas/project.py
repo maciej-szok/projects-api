@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from .common import OptionalModel
 from .date_range import DateRange, DateRangeIn
@@ -28,8 +28,7 @@ class ProjectInDBBase(ProjectBase):
     id: int
     date_range: DateRange
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # Properties to return to client

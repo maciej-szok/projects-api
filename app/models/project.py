@@ -10,9 +10,9 @@ class Project(Base):
     name = Column(Unicode(32))
     description = Column(UnicodeText, nullable=True)
 
-    # TODO add links to current docs
-    # https://docs.sqlalchemy.org/en/13/dialects/postgresql.html#sqlalchemy.dialects.postgresql.DATERANGE
+    # https://docs.sqlalchemy.org/en/20/dialects/postgresql.html#sqlalchemy.dialects.postgresql.DATERANGE
     date_range = Column(DATERANGE)
 
-    # https://docs.sqlalchemy.org/en/13/dialects/postgresql.html#sqlalchemy.dialects.postgresql.JSONB
+    # https://docs.sqlalchemy.org/en/20/dialects/postgresql.html#sqlalchemy.dialects.postgresql.JSONB
+    # generally faster than storing JSON in a TEXT column
     area_of_interest = Column(JSONB)

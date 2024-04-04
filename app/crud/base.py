@@ -16,6 +16,7 @@ if settings.DEBUG:
     logging.basicConfig()
     logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 
+
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         """

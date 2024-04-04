@@ -13,6 +13,8 @@ class ProjectBase(BaseModel):
     name: str = Field(min_length=1, max_length=32)
     # Max description length is an arbitrary large number, can be freely changed if needed
     description: Optional[str] = Field(max_length=2000, default=None)
+    # As the exact structure of the area_of_interest is not strictly defined, I decided to not validate the structure.
+    # JSON structure validation can be easily achieved with Pydantic
     area_of_interest: dict
 
 

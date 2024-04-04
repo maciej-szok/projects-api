@@ -36,7 +36,10 @@ Technical requirements:
 {
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -49,7 +52,10 @@ Technical requirements:
   "id": "string",
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -70,7 +76,10 @@ With no authentication, random hash should be used instead of the ID.
   "id": "string",
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -86,17 +95,22 @@ With no authentication, random hash should be used instead of the ID.
 
 Storing the projects in the `"item"` field will allow for easy expansion of the response in the future (paging etc).
 ```json
-"items": [
+{
+  "items": [
   {
     "id": "string",
     "name": "string",
     "description": "string",
-    "date_range": ["string", "string"],
+      "date_range": {
+        "upper": "string",
+        "lower": "string"
+      },
     "area_of_interest": {
        ...
     }
   }
 ]
+}
 ```
 
 ## Update project
@@ -109,7 +123,10 @@ Storing the projects in the `"item"` field will allow for easy expansion of the 
 {
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -122,7 +139,10 @@ Storing the projects in the `"item"` field will allow for easy expansion of the 
   "id": "string",
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -140,7 +160,10 @@ Storing the projects in the `"item"` field will allow for easy expansion of the 
   "id": "string",
   "name": "string",
   "description": "string",
-  "date_range": ["string", "string"],
+  "date_range": {
+    "upper": "string",
+    "lower": "string"
+  },
   "area_of_interest": {
      ...
   }
@@ -155,7 +178,7 @@ Storing the projects in the `"item"` field will allow for easy expansion of the 
 
 ## Processing requests
 - FastAPI will be used to handle the requests
-- The application will use Uvicorn ASGI
+- The application will use Gunicorn
 - No user authentication will be implemented at this stage
 
 ## Data storage
@@ -196,7 +219,7 @@ Tests will be written using pytest and FastAPI's TestClient.
 ## Running and deploy
 Dockerfile will be created to dockerize the application.
 
-`docker-compose` will launch the application, postgres database and connect them using a network.
+`docker compose` will launch the application, postgres database and connect them using a network.
 
 Bash script will be provided to easily build and run the application.
 

@@ -1,8 +1,8 @@
 from typing import Any, Annotated
 
-from pydantic import AnyHttpUrl, PostgresDsn, computed_field, BeforeValidator, AnyUrl, ConfigDict
+from pydantic import AnyHttpUrl, PostgresDsn, computed_field, BeforeValidator, AnyUrl
 from pydantic_core import MultiHostUrl
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 def parse_cors(v: Any) -> list[str] | str:
@@ -44,7 +44,7 @@ class Settings(BaseSettings):
 
     MAX_PAGE_SIZE: int = 50
 
-    model_config = ConfigDict(case_sensitive=True)
+    model_config = SettingsConfigDict(case_sensitive=True)
 
 
 settings = Settings()

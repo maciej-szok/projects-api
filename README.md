@@ -6,7 +6,7 @@
       - create an `.env` file based on `.env.local`,
       - load the `.env` file,
       - build a docker container containing the application,
-      - start docker container using `docker compose`,
+      - start containers using `docker compose`,
       - print out some useful info.
 
 # How to run tests

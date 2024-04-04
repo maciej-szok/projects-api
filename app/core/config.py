@@ -20,12 +20,14 @@ class Settings(BaseSettings):
     ] = []
 
     API_V1_PATH: str = "/api/v1"
-    SERVER_HOST: AnyHttpUrl
 
-    POSTGRES_SERVER: str
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_DB: str
+    # default values that will work for local development
+    SERVER_HOST: AnyHttpUrl = "http://0.0.0.0:3000"
+
+    POSTGRES_SERVER: str = 'db'
+    POSTGRES_USER: str = 'postgres'
+    POSTGRES_PASSWORD: str = 'changethis'
+    POSTGRES_DB: str = 'projects'
     POSTGRES_PORT: int = 5432
 
     DEBUG: bool = False

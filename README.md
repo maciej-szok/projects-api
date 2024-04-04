@@ -22,6 +22,22 @@
 Project will automatically generate OpenAPI documentation, 
 by default available at [http://0.0.0.0:3000/docs](http://0.0.0.0:3000/docs).
 
+### Project Structure (request & response bodies)
+```
+{
+	"name": "Example project", # up to 32 characters
+	"description": null, # optional; can be null or a string (up to 2000 characters)
+	"area_of_interest": { # any fields under area_of_interest are optional
+		"field1": "oka"
+	},
+	"id": 1, # unique identifier
+	"date_range": {
+		"lower": "2024-04-02", # date format: YYYY-MM-DD, lower is inclusive
+		"upper": "2024-04-03"  # same as above, but upper is exclusive
+	}
+}
+```
+
 
 # TODO
 * [x] Design the REST API and decide on architecture
